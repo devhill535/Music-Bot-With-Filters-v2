@@ -6,77 +6,46 @@ const {
 } = require(`../config.json`);
 
 module.exports = {
-  name: `help`,
-  description: `Gives you a list of all help Commands`,
-  aliases: ["h","commands"],
-  cooldown: 3,
-  edesc: "Type help to get a short preview of all Commands, Type help <COMMANDNAME> to get extended information about this one command!",
-  execute(message,args,client) {
-     
+  name: "help",
+  aliases: ["h"],
+  description: "HELP COMMANDS",
+  execute(message) {
     let commands = message.client.commands.array();
- 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Harmony Help")
-      .setAuthor('Click here to invite me!!', 'https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif', 'https://discord.com/api/oauth2/authorize?client_id=767885987740254291&permissions=49572160&scope=bot')
-      .setDescription(`**PREFIX:** \`${PREFIX}\``)
-      .setFooter( client.user.username +`Type: ${PREFIX}help <Command>  for more information!`, "https://cdn.discordapp.com/attachments/778600026280558617/781024479623118878/ezgif.com-gif-maker_1.gif")
-      .setColor("#F0EAD6");
-
-      let ifargstruedothis = -1;
+      .setAuthor(`Renox Help`)
+      .setThumbnail(message.author.avatarURL({dynamic: "true"}))
+      .setFooter(message.author.username,message.author.displayAvatarURL({ dynamic: "true" }))
+      .setColor("RANDOM")
       
-      switch(args[0]){
-          case "filter":
-           ifargstruedothis=0;
-          break;
-          case "loop":
-            ifargstruedothis=1;
-          break;
-          case "lyrics":
-            ifargstruedothis=2
-          break;
-          case "nowplaying":
-            ifargstruedothis=3
-          break;
-          case "pause":
-            ifargstruedothis=4
-          break;
-          case "play":
-            ifargstruedothis=5
-          break;
-          case "playlist":
-            ifargstruedothis=6
-          break;
-          case "queue":
-            ifargstruedothis=7
-          break;
-          case "radio":
-            ifargstruedothis=8
-          break;
-          case "remove":
-            ifargstruedothis=9
-          break;
-          case "resume":
-            ifargstruedothis=10
-          break;
-          case "search":
-            ifargstruedothis=11
-          break;
-          case "shuffle":
-            ifargstruedothis=12
-          break;
-          case "skip":
-            ifargstruedothis=13
-          break;
-          case "skipto":
-            ifargstruedothis=14
-          break;
-          case "stop":
-            ifargstruedothis=15
-          break;
-          case "volume":
-            ifargstruedothis=16
-          break;
-          case "help":
+    .setDescription(`\`
+
+INFO COMMANDS 
+
+help, ping, uptime,
+
+MUSIC COMMANDS
+
+loop, lyricns ,remove
+,nowplaying, pause,play
+queue, radio ,skipto 
+resume,search, shuffle
+skip, stop, volume
+
+FILTERS COMMANDS 
+
+bassboost ,8D ,vaporwave 
+,nightcore ,phaser ,tremolo
+vibrato ,surrounding ,pulsator 
+,subboost ,clear
+
+\`
+**[   SUPPORT  ](https://discord.gg/robot)** -  [   INVITE   ](https://discord.com/api/oauth2/authorize?client_id=789233974798319648&permissions=1342568564&scope=bot)  -  [   WEBSITE   ](https://website-renox.glitch.me)`)
+
+    //////////////
+   //////////////
+    return message.channel.send(helpEmbed).catch(console.error);
+  }
+};
             ifargstruedothis=17
           break;    
           case "invite":
